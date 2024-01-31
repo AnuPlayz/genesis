@@ -1,78 +1,65 @@
-# vue-game-dapp
+#Game dapp
 
-使用 Solidity、Web3 和 Vue.js 创建区块链游戏
+Create a blockchain game using Solidity, Web3, and Vue.js
 
-### 开始
+### start
 
-进入文件 `hardhat.config.js` ，增加一个钱包私钥和网络 Token。
+Enter the file `hardhat.config.js` and add a wallet private key and network Token.
 
-安装依赖：
+Install dependencies:
 
 ```
 npm install
 ```
 
-然后测试合约
+Then test the contract
 
 ```
 npx hardhat test
 ```
 
-### 合约部署
-
-#### 部署到 Goerli 测试网络
-
-发布部署合约，下面的指令为部署到 ETH 测试网络 Goerli
+### Contract deployment
 
 ```
-npx hardhat run scripts/deploy.js --network goerli
+npx hardhat run scripts/deploy.js --network mumbai
 ```
 
-#### 部署到 Sepolia 测试网络
-
-发布部署合约，下面的指令为部署到 ETH 测试网络 Sepolia
+#### Deploy to Berachain test network
 
 ```
-npx hardhat run scripts/deploy.js --network sepolia
+npx hardhat run scripts/deploy.js --network berachain
 ```
 
-#### 水龙头
+### Front-end operation
 
--   测试网络 Goerli：https://goerlifaucet.com/， 每个账号每天可以获取 `0.1ETH`，由于水龙头紧张，现在领取的钱包地址必须主网有用一点额度
--   测试网络 Sepolia：https://sepoliafaucet.com/ ，每个账号每天可以获取 `0.5ETH`
-
-### 前端运行
-
-进入前端目录：
+Enter the front-end directory:
 
 ```
 cd game
 ```
 
-安装依赖
+Install dependencies
 
 ```
 yarn install
 ```
 
-设置合约地址
+Set contract address
 
-编辑文件 `.env`，把部署的合约地址填入。
+Edit the file `.env` and fill in the deployed contract address.
 
 ```
 CONTRACT_ADDRESS="0xe"
 ```
 
-启动前端
+Start the frontend
 
 ```
 yarn serve
 ```
 
-即可正常启动。
+It will start normally.
 
-### 体验
+### Experience
 
-![GAME UI](https://s2.51cto.com/images/20220305/1646465891354624.jpeg)
-
-**体验地址：**[https://web3-game.crayon.dev/](https://web3-game.crayon.dev/)
+**Experience address:**[https://web3-game.crayon.dev/](https://web3-game.crayon.dev/)
