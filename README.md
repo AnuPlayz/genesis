@@ -22,12 +22,14 @@ npx hardhat test
 
 ```
 npx hardhat run scripts/deploy.js --network mumbai
+Deployment Address - 0xBfB69Cc23F215d08245422b1B2D3EE2a790443Ef
 ```
 
 #### Deploy to Berachain test network
 
 ```
 npx hardhat run scripts/deploy.js --network berachain
+Deployment Address - 
 ```
 
 ### Front-end operation
