@@ -61,7 +61,3 @@ yarn serve
 ```
 
 It will start normally.
-
-### Experience
-
-**Experience address:**[https://web3-game.crayon.dev/](https://web3-game.crayon.dev/)
