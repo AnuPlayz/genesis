@@ -29,7 +29,7 @@ Deployment Address - 0xBfB69Cc23F215d08245422b1B2D3EE2a790443Ef
 
 ```
 npx hardhat run scripts/deploy.js --network berachain
-Deployment Address - 
+Deployment Address - 0xB4dC03DE4e224070713d273E60b8D62457114719
 ```
 
 ### Front-end operation

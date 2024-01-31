@@ -1,4 +1,4 @@
-# game
+c# game
 
 ## Project setup
 ```

@@ -16,9 +16,8 @@ module.exports = {
             accounts: [config.privateKey],
         },
         berachain: {
-            url: `https://artio.rpc.berachain.com/`,
-            accounts: ["0xfa75ccc4dda10508a839d3b1924ffce336fe2053dd5e9078cb791575c1f1337b"],
-            chainId: 80085,
+            url: `https://rpc.ankr.com/berachain_testnet`,
+            accounts: [config.privateKey],
         }
     },
 };
