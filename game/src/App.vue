@@ -1,0 +1,258 @@
+<template>
+    <div class="app" id="app">
+        <div class="mx-auto">
+            <div class="header-container">
+                <p class="header gradient-text">⚔️ Three heroes fight against Krish ⚔️</p>
+                <p class="sub-text">
+                    Taking the desperate battle between the three brothers Aniruddh, Sudhan, and Wrench and the fierce general Krish as the object of description, it depicts a hearty battle on the battlefield.
+                </p>
+                <div class="connect-wallet-container" v-if="!account">
+                    <img
+                        src="https://resources.crayon.dev/suangguosha/header.png"
+                        alt=""
+                    />
+                    <button
+                        class="cta-button connect-wallet-button"
+                        @click="connect"
+                    >
+                        <span>Connect wallet and get started</span>
+                    </button>
+                </div>
+                <select-character v-else-if="account && !characterNFT" />
+                <arena v-else-if="account && characterNFT" />
+            </div>
+            <div class="footer-container">
+                <img
+                    alt="Twitter"
+                    class="twitter-logo"
+                    src="./assets/twitter-logo.svg"
+                />
+                <a
+                    class="footer-text"
+                    :href="twitter_link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >built with @{{ twitter_handle }}</a
+                >
+            </div>
+        </div>
+        <div class="github-container">
+            <a
+                href="https://github.com/AnuPlayz/genesis"
+                rel="noopener"
+                target="_blank"
+                aria-label="Star AnuPlayz on GitHub"
+                ><svg
+                    viewBox="0 0 16 16"
+                    width="14"
+                    height="14"
+                    class="octicon octicon-star"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694Z"
+                    ></path></svg
+                ><span>Star</span></a
+            >
+        </div>
+    </div>
+</template>
+
+<script>
+import SelectCharacter from "./components/SelectCharacter.vue";
+import Arena from "./components/Arena.vue";
+export default {
+    name: "App",
+    data() {
+        return {
+            twitter_handle: "ani__x_",
+            twitter_link: "https://twitter.com/ani__x_",
+            github_link: "https://github.com/AnuPlayz/genesis",
+        };
+    },
+    methods: {
+        async connect() {
+            await this.$store.dispatch("connect", 1);
+        },
+    },
+    async mounted() {
+        await this.$store.dispatch("connect");
+    },
+    computed: {
+        account() {
+            return this.$store.getters.account;
+        },
+        mining() {
+            return this.$store.getters.mining;
+        },
+        characterNFT() {
+            return this.$store.getters.characterNFT;
+        },
+    },
+    components: {
+        SelectCharacter,
+        Arena,
+    },
+};
+</script>
+
+<style>
+.app {
+    height: 100vh;
+    overflow: scroll;
+    text-align: center;
+}
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.header-container {
+    padding-top: 30px;
+}
+.header {
+    margin: 0;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+}
+.sub-text {
+    font-size: 14px;
+    color: white;
+}
+.content-container {
+    background-color: #a200d6;
+}
+.cta-button {
+    padding: 10px 25px;
+    margin: 0 8px;
+    text-align: center;
+    touch-action: manipulation;
+    font-size: 28px;
+    vertical-align: middle;
+    white-space: nowrap;
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    font-weight: 700;
+    line-height: 60px;
+    transition: 0.3s cubic-bezier(0.79, 0.14, 0.15, 0.86);
+    border-radius: 3px;
+}
+.cta-button span {
+    position: inherit;
+    z-index: 2;
+}
+.cta-button::before,
+.cta-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.3s cubic-bezier(0.79, 0.14, 0.15, 0.86);
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+}
+.cta-button::before {
+    content: "";
+    background-color: #ff0052;
+    z-index: 1;
+    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+.cta-button::after {
+    content: "";
+    background-color: #fff;
+    transform: translate(4px, 4px);
+    z-index: 0;
+}
+.cta-button:hover {
+    color: #ff0052;
+    transform: translate(4px, 4px);
+}
+.cta-button:hover::after {
+    background-color: #ff0052;
+    transform: translate(-4px, -4px);
+}
+.cta-button:hover::before {
+    background-color: #ffffff;
+}
+.connect-wallet-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 550px;
+    margin-bottom: 30px;
+}
+.connect-wallet-container img {
+    padding-bottom: 20px;
+}
+.connect-wallet-button {
+    background-size: 200% 200%;
+    animation: gradient-animation 4s ease infinite;
+}
+.mint-button {
+    background: -webkit-linear-gradient(left, #a200d6, #ff6fdf);
+    background-size: 200% 200%;
+    animation: gradient-animation 4s ease infinite;
+    margin-right: 15px;
+}
+.opensea-button {
+    background-color: rgb(32, 129, 226);
+}
+.mint-count {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+}
+.twitter-logo {
+    width: 35px;
+    height: 35px;
+}
+.footer-text {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+/* KeyFrames */
+@-webkit-keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+@-moz-keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+</style>
